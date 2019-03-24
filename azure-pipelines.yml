@@ -1,0 +1,36 @@
+jobs:
+
+- job: Android
+  pool:
+    vmImage: 'macOS 10.13'
+  steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '8.x'
+    displayName: 'Install Node.js'
+
+  - script: yarn install
+    displayName: 'yarn install'
+
+  - task: Gradle@2
+    displayName: 'Building Android apk (debug)...'
+    inputs:
+      workingDirectory: 'android/'
+      gradleWrapperFile: 'android/gradlew'
+      gradleOptions: '-Xmx3072m'
+      publishJUnitResults: false
+      testResultsFiles: '**/TEST-*.xml'
+      tasks: 'assembleDebug'
+
+  - task: CopyFiles@2
+    displayName: 'Copying .apk files...'
+    inputs:
+      contents: '**/*.apk'
+      targetFolder: '$(build.artifactStagingDirectory)'
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Archiving .apk...'
+    inputs:
+      pathToPublish: '$(build.artifactStagingDirectory)/android/app/build/outputs/apk/'
+      artifactName: 'apk'
+      artifactType: 'container'

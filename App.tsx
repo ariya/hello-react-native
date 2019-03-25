@@ -3,10 +3,10 @@
  * https://github.com/facebook/react-native
  *
  * @format
- * @flow
  */
 
-import React, {Component} from 'react';
+import React from 'react';
+import {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 
 type Props = {};

@@ -3,25 +3,64 @@
   "version": "0.0.1",
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest",
-    "lint": "eslint ."
+    "test": "yarn static-code-analysis && yarn dynamic-code-analysis",
+    "static-code-analysis": "yarn tslint && yarn prettier",
+    "dynamic-code-analysis": "jest --coverage",
+    "tslint": "tslint -p .",
+    "prettier": "prettier --check \"./**/*.{ts,tsx}\"",
+    "format": "prettier --write \"./**/*.{ts,tsx}\"",
+    "jest": "jest"
   },
   "dependencies": {
+    "@babel/core": "^7.3.3",
+    "@babel/runtime": "^7.1.5",
     "react": "16.8.3",
     "react-native": "0.59.1"
   },
   "devDependencies": {
-    "@react-native-community/eslint-config": "^0.0.3",
+    "@types/jest": "23.3.1",
+    "@types/node": "10.12.9",
     "@types/react": "16.8.12",
     "@types/react-native": "0.57.42",
-    "eslint": "5.15.3",
+    "babel-jest": "23.6.0",
+    "babel-preset-react-native": "5.0.2",
     "jest": "24.5.0",
-    "metro-react-native-babel-preset": "0.53.1",
+    "prettier": "1.16.4",
     "react-native-typescript-transformer": "1.2.12",
     "react-test-renderer": "16.8.3",
+    "ts-jest": "23.1.4",
+    "tslint": "5.11.0",
     "typescript": "3.4.2"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js",
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testPathIgnorePatterns": [
+      "<rootDir>/build/",
+      "<rootDir>/node_modules/"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-navigation)"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "ios.ts",
+      "ios.tsx",
+      "android.ts",
+      "android.tsx"
+    ]
+  },
+  "prettier": {
+    "bracketSpacing": false,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "arrowParens": "always"
   }
 }

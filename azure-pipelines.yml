@@ -1,5 +1,23 @@
 jobs:
 
+- job: CodeQuality
+  pool:
+    vmImage: 'ubuntu-16.04'
+  steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '8.x'
+    displayName: 'Install Node.js'
+
+  - script: yarn install
+    displayName: 'yarn install'
+
+  - script: yarn static-code-analysis
+    displayName: 'yarn static-code-analysis'
+
+  - script: yarn dynamic-code-analysis
+    displayName: 'yarn dynamic-code-analysis'
+
 - job: Android
   pool:
     vmImage: 'macOS 10.13'

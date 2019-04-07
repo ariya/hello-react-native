@@ -8,8 +8,8 @@
     "static-code-analysis": "yarn tslint && yarn prettier",
     "dynamic-code-analysis": "jest --coverage",
     "tslint": "tslint -p .",
-    "prettier": "prettier --check \"./**/*.{ts,tsx}\"",
-    "format": "prettier --write \"./**/*.{ts,tsx}\"",
+    "prettier": "prettier --check \"src/**/*.{ts,tsx}\"",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "jest": "jest"
   },
   "dependencies": {

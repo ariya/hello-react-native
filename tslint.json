@@ -1,0 +1,16 @@
+{
+  "defaultSeverity": "error",
+  "extends": ["tslint:recommended", "tslint-config-prettier"],
+  "jsRules": {},
+  "rules": {
+    "interface-over-type-literal": false,
+    "member-access": [true, "no-public"],
+    "object-literal-sort-keys": false
+  },
+  "rulesDirectory": [],
+  "linterOptions": {
+    "exclude": [
+      "package.json"
+    ]
+  }
+}

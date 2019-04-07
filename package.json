@@ -1,6 +1,7 @@
 {
   "name": "HelloReactNative",
   "version": "0.0.1",
+  "license": "MIT",
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "yarn static-code-analysis && yarn dynamic-code-analysis",

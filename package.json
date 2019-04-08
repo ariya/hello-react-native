@@ -4,13 +4,14 @@
   "license": "MIT",
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "yarn static-code-analysis && yarn dynamic-code-analysis",
-    "static-code-analysis": "yarn tslint && yarn prettier",
+    "test": "npm run static-code-analysis && npm run dynamic-code-analysis",
+    "static-code-analysis": "npm run tslint && npm run prettier",
     "dynamic-code-analysis": "jest --coverage",
     "tslint": "tslint -p src",
     "prettier": "prettier --check \"src/**/*.{ts,tsx}\"",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
-    "jest": "jest"
+    "jest": "jest",
+    "android": "react-native run-android"
   },
   "dependencies": {
     "react": "16.8.3",

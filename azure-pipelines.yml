@@ -9,14 +9,14 @@ jobs:
       versionSpec: '8.x'
     displayName: 'Install Node.js'
 
-  - script: yarn install
-    displayName: 'yarn install'
+  - script: npm install
+    displayName: 'npm install'
 
-  - script: yarn static-code-analysis
-    displayName: 'yarn static-code-analysis'
+  - script: npm run static-code-analysis
+    displayName: 'npm run static-code-analysis'
 
-  - script: yarn dynamic-code-analysis
-    displayName: 'yarn dynamic-code-analysis'
+  - script: npm run dynamic-code-analysis
+    displayName: 'npm run dynamic-code-analysis'
 
 - job: Android
   pool:
@@ -27,8 +27,8 @@ jobs:
       versionSpec: '8.x'
     displayName: 'Install Node.js'
 
-  - script: yarn install
-    displayName: 'yarn install'
+  - script: npm install
+    displayName: 'npm install'
 
   - task: Gradle@2
     displayName: 'Building Android apk (debug)...'
@@ -62,8 +62,8 @@ jobs:
       versionSpec: '8.x'
     displayName: 'Install Node.js'
 
-  - script: yarn install
-    displayName: 'yarn install'
+  - script: npm install
+    displayName: 'npm install'
 
   - task: Xcode@5
     displayName: 'Building iOS app (debug)...'

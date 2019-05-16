@@ -11,7 +11,9 @@
     "prettier": "prettier --check \"src/**/*.{ts,tsx}\"",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "jest": "jest",
-    "android": "react-native run-android"
+    "bundle:android": "mkdir -p android/app/src/main/assets && react-native bundle --platform android --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
+    "run:android": "react-native run-android",
+    "android": "npm run bundle:android && npm run run:android"
   },
   "dependencies": {
     "react": "16.8.3",

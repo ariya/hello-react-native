@@ -92,3 +92,31 @@ jobs:
       pathToPublish: '$(build.artifactStagingDirectory)/HelloReactNative.xcarchive.zip'
       artifactName: 'xcarchive'
       artifactType: 'container'
+
+- job: PrepareSplitAPK
+  pool:
+    vmImage: 'macOS 10.13'
+  condition: contains(variables['Build.SourceBranch'], 'release/')
+
+  steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '8.x'
+    displayName: 'Install Node.js'
+
+  - script: npm ci
+    displayName: 'npm ci'
+
+  - task: Gradle@2
+    displayName: 'Building Android apk (release)...'
+    inputs:
+      workingDirectory: 'android/'
+      gradleWrapperFile: 'android/gradlew'
+      publishJUnitResults: false
+      tasks: 'assembleRelease'
+
+  - task: CopyFiles@2
+    displayName: 'Copying .apk files...'
+    inputs:
+      contents: '**/*.apk'
+      targetFolder: '$(build.artifactStagingDirectory)'

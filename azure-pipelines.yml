@@ -65,13 +65,17 @@ jobs:
   - script: npm ci
     displayName: 'npm ci'
 
+  - task: CocoaPods@0
+    inputs:
+      workingDirectory: 'ios/'
+
   - task: Xcode@5
     displayName: 'Building iOS app (debug)...'
     inputs:
       actions: 'clean build archive'
       sdk: 'iphoneos'
       configuration: 'Debug'
-      xcWorkspacePath: 'ios/HelloReactNative.xcodeproj'
+      xcWorkspacePath: 'ios/HelloReactNative.xcworkspace'
       scheme: 'HelloReactNative'
       xcodeVersion: '10'
       signingOption: 'nosign'

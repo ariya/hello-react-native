@@ -120,3 +120,10 @@ jobs:
     inputs:
       contents: '**/*.apk'
       targetFolder: '$(build.artifactStagingDirectory)'
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Archiving .apk...'
+    inputs:
+      pathToPublish: '$(build.artifactStagingDirectory)/android/app/build/outputs/apk/'
+      artifactName: 'apk'
+      artifactType: 'container'

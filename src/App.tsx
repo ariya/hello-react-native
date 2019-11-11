@@ -6,9 +6,12 @@ type Props = {};
 export default class App extends Component<Props> {
   render() {
     const useHermes = global.hasOwnProperty('HermesInternal');
+    const RNVersion = require('../node_modules/react-native/Libraries/Core/ReactNativeVersion');
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native v0.60!</Text>
+        <Text style={styles.welcome}>
+          Welcome to React Native {RNVersion.version.minor}
+        </Text>
         <Text>
           {useHermes
             ? 'JavaScript engine: Hermes'

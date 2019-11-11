@@ -13,7 +13,8 @@
     "jest": "jest",
     "bundle:android": "mkdir -p android/app/src/main/assets && react-native bundle --platform android --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
     "run:android": "react-native run-android",
-    "android": "npm run bundle:android && npm run run:android"
+    "android": "npm run bundle:android && npm run run:android",
+    "ios": "react-native run-ios"
   },
   "dependencies": {
     "react": "16.8.6",

@@ -17,8 +17,8 @@
     "ios": "react-native run-ios"
   },
   "dependencies": {
-    "react": "16.8.6",
-    "react-native": "0.60.5"
+    "react": "16.9.0",
+    "react-native": "0.61.4"
   },
   "devDependencies": {
     "@types/jest": "23.3.1",

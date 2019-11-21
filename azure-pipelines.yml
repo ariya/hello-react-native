@@ -19,6 +19,7 @@ jobs:
     displayName: 'npm run dynamic-code-analysis'
 
 - job: Android
+  dependsOn: CodeQuality
   pool:
     vmImage: 'macOS 10.13'
   steps:
@@ -54,6 +55,7 @@ jobs:
       artifactType: 'container'
 
 - job: iOS
+  dependsOn: CodeQuality
   pool:
     vmImage: 'macOS 10.13'
   steps:

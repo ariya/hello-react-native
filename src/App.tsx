@@ -2,11 +2,19 @@ import React from 'react';
 import {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
+type VersionInfo = {
+  version: {
+    major: number;
+    minor: number;
+    patch: number;
+  };
+};
+
 type Props = {};
 export default class App extends Component<Props> {
   render() {
     const useHermes = global.hasOwnProperty('HermesInternal');
-    const RNVersion = require('../node_modules/react-native/Libraries/Core/ReactNativeVersion');
+    const RNVersion: VersionInfo = require('../node_modules/react-native/Libraries/Core/ReactNativeVersion');
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>

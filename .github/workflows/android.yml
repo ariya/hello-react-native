@@ -1,0 +1,23 @@
+name: Android
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js v12
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+
+    - run: npm ci
+    - run: ./gradlew assembleDebug
+      working-directory: android
+      name: Build Android apk (debug)
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: android-apk
+        path: '**/*.apk'

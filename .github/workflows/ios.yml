@@ -16,6 +16,13 @@ jobs:
 
     - run: xcode-select -p
 
+    - name: Cache pods
+      uses: actions/cache@v1
+      with:
+        path: ios/Pods
+        key: ${{ runner.OS }}-pods-cache-${{ hashFiles('**/ios/Podfile.lock') }}
+        restore-keys: |
+          ${{ runner.OS }}-pods-cache-
     - run: pod install
       working-directory: ios
       name: Install pod dependencies

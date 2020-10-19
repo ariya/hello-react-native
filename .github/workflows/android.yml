@@ -12,7 +12,15 @@ jobs:
       with:
         node-version: 12.x
 
+    - name: Cache npm dependencies
+      uses: actions/cache@v2
+      with:
+        path: '~/.npm'
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
     - run: npm ci
+
     - run: ./gradlew assembleDebug
       working-directory: android
       name: Build Android apk (debug)

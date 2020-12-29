@@ -18,7 +18,7 @@ export default class App extends Component<Props> {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native {RNVersion.version.minor}
+          This is a demo using React Native {RNVersion.version.minor}
         </Text>
         <Text>
           {useHermes
